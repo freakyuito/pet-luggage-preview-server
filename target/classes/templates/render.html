@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Mobile Specific Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon-->
+    <link rel="shortcut icon" th:href="@{/img/fav.png}">
+    <!-- Author Meta -->
+    <meta name="author" content="codepixer">
+    <!-- Meta Description -->
+    <meta name="description" content="">
+    <!-- Meta Keyword -->
+    <meta name="keywords" content="">
+    <!-- meta character set -->
+    <meta charset="UTF-8">
+    <!-- Site Title -->
+    <title>Book</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+    <!--
+    CSS
+    ============================================= -->
+    <link rel="stylesheet" th:href="@{/css/linearicons.css}">
+    <link rel="stylesheet" th:href="@{/css/font-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{/css/magnific-popup.css}">
+    <link rel="stylesheet" th:href="@{/css/nice-select.css}">
+    <link rel="stylesheet" th:href="@{/css/animate.min.css}">
+    <link rel="stylesheet" th:href="@{/css/owl.carousel.css}">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+
+    <style>
+    </style>
+</head>
+<body>
+
+<header id="header">
+    <div class="container">
+        <div class="row align-items-center justify-content-between d-flex">
+            <div id="logo">
+                <a href="#"><img th:src="@{/img/logo.png}" alt="" title=""/></a>
+            </div>
+            <nav id="nav-menu-container">
+                <ul class="nav-menu">
+                    <li class="menu-active"><a href="#">主页</a></li>
+                    <li><a href="#">产品</a></li>
+                    <li><a href="#">价格</a></li>
+                    <li><a href="#">服务</a></li>
+                </ul>
+            </nav><!-- #nav-menu-container -->
+        </div>
+    </div>
+</header><!-- #header -->
+
+<section class="generic-banner relative">
+    <div class="container">
+        <div class="row height align-items-center justify-content-center">
+            <div class="col-lg-10">
+                <div class="generic-banner-content">
+                    <h2 class="text-white">渲染图已就绪</h2>
+                    <p class="text-white">根据上传图片的箱包实景渲染图可在下方查看</p>
+                    <button id="3d-preview" class="primary-btn text-uppercase"
+                            style="overflow: hidden;display: inline-block;" onclick="checkCampatibility()">生成3D模型
+                    </button>
+                    <input id="img-url" hidden="hidden" th:value="${imgUrl}"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="course-area section-gap" id="course">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="menu-content pb-60 col-lg-9">
+                <div class="title text-center">
+                    <h1 class="mb-10">与众不同，万里挑一</h1>
+                    <p>即刻定制专属自己的行李箱</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="active-course-carusel">
+                <div class="single-course item" th:each="item:${renderItems}">
+                    <img class="img-fluid" th:src="${item.url}" alt="">
+                    <div class="details">
+                        <h4 th:text="${item.title}"></h4>
+                        <p th:text="${item.intro}"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer-area section-gap">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 col-md-6 col-sm-6">
+                <div class="single-footer-widget">
+                    <h6>About Us</h6>
+                    <p>
+                        <!--Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut-->
+                        <!--labore dolore magna aliqua.-->
+                    </p>
+                    <p class="footer-text">
+                        Copyright &copy; Overseachem Ltd.</br>
+                        上海晟海实业有限公司
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-5  col-md-6 col-sm-6">
+                <div class="single-footer-widget">
+                    <h6>Newsletter</h6>
+                    <p>Stay update with our latest</p>
+                    <div class="" id="mc_embed_signup">
+                        <form target="_blank" novalidate
+                              action="#/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get"
+                              class="form-inline">
+                            <input class="form-control" name="EMAIL" placeholder="EMAIL ADDRESS"
+                                   onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Email '"
+                                   required="" type="email">
+                            <button class="click-btn btn btn-default"><i class="fa fa-long-arrow-right"
+                                                                         aria-hidden="true"></i></button>
+                            <div style="position: absolute; left: -5000px;">
+                                <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
+                            </div>
+
+                            <div class="info"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6 col-sm-6 social-widget">
+                <br class="single-footer-widget">
+                <h6>Follow Us</h6>
+                <p>No.58,Zhanye Rd.,Jinshan District,Shanghai City </br>
+                    上海市金山区展业路58号</p>
+            </div>
+        </div>
+    </div>
+    </div>
+</footer>
+<!-- End footer Area -->
+
+<script th:src="@{/js/vendor/jquery-2.2.4.min.js}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script th:src="@{/js/vendor/bootstrap.min.js}"></script>
+
+<script th:src="@{/js/easing.min.js}"></script>
+<script th:src="@{/js/hoverIntent.js}"></script>
+<script th:src="@{/js/superfish.min.js}"></script>
+<script th:src="@{/js/jquery.ajaxchimp.min.js}"></script>
+<script th:src="@{/js/jquery.magnific-popup.min.js}"></script>
+<script th:src="@{/js/owl.carousel.min.js}"></script>
+<script th:src="@{/js/jquery.sticky.js}"></script>
+<script th:src="@{/js/jquery.nice-select.min.js}"></script>
+<script th:src="@{/js/parallax.min.js}"></script>
+<script th:src="@{/js/waypoints.min.js}"></script>
+<script th:src="@{/js/jquery.counterup.min.js}"></script>
+<script th:src="@{/js/mail-script.js}"></script>
+<script th:src="@{/js/main.js}"></script>
+
+<script>
+    $(function () {
+    })
+
+    function checkCampatibility() {
+        alert("3D预览功能现只适用于Safari,Firefox,Chrome和其他以之为内核的浏览器");
+        if (BrowserType() == "FF" || BrowserType() == "Safari" || BrowserType() == "Chrome") {
+            location.href = '/preview/gl?textureUrl=' + $('#img-url').val();
+        }
+    }
+
+    function BrowserType() {
+        var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串
+        var isOpera = userAgent.indexOf("Opera") > -1; //判断是否Opera浏览器
+        var isIE = userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1 && !isOpera; //判断是否IE浏览器
+        var isEdge = userAgent.indexOf("Windows NT 6.1; Trident/7.0;") > -1 && !isIE; //判断是否IE的Edge浏览器
+        var isFF = userAgent.indexOf("Firefox") > -1; //判断是否Firefox浏览器
+        var isSafari = userAgent.indexOf("Safari") > -1 && userAgent.indexOf("Chrome") == -1; //判断是否Safari浏览器
+        var isChrome = userAgent.indexOf("Chrome") > -1 && userAgent.indexOf("Safari") > -1; //判断Chrome浏览器
+
+        if (isIE) {
+            var reIE = new RegExp("MSIE (\\d+\\.\\d+);");
+            reIE.test(userAgent);
+            var fIEVersion = parseFloat(RegExp["$1"]);
+            if (fIEVersion == 7) {
+                return "IE7";
+            }
+            else if (fIEVersion == 8) {
+                return "IE8";
+            }
+            else if (fIEVersion == 9) {
+                return "IE9";
+            }
+            else if (fIEVersion == 10) {
+                return "IE10";
+            }
+            else if (fIEVersion == 11) {
+                return "IE11";
+            }
+            else {
+                return "0"
+            }//IE版本过低
+        }//isIE end
+
+        if (isFF) {
+            return "FF";
+        }
+        if (isOpera) {
+            return "Opera";
+        }
+        if (isSafari) {
+            return "Safari";
+        }
+        if (isChrome) {
+            return "Chrome";
+        }
+        if (isEdge) {
+            return "Edge";
+        }
+    }//myBrowser() end
+
+    //判断是否是IE浏览器
+    function isIE() {
+        var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串
+        var isIE = userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1 && !isOpera; //判断是否IE浏览器
+        if (isIE) {
+            return "1";
+        }
+        else {
+            return "-1";
+        }
+    }
+
+
+    //判断是否是IE浏览器，包括Edge浏览器
+    function IEVersion() {
+        var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串
+        var isIE = userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1 && !isOpera; //判断是否IE浏览器
+        var isEdge = userAgent.indexOf("Windows NT 6.1; Trident/7.0;") > -1 && !isIE; //判断是否IE的Edge浏览器
+        if (isIE) {
+            var reIE = new RegExp("MSIE (\\d+\\.\\d+);");
+            reIE.test(userAgent);
+            var fIEVersion = parseFloat(RegExp["$1"]);
+            if (fIEVersion == 7) {
+                return "IE7";
+            }
+            else if (fIEVersion == 8) {
+                return "IE8";
+            }
+            else if (fIEVersion == 9) {
+                return "IE9";
+            }
+            else if (fIEVersion == 10) {
+                return "IE10";
+            }
+            else if (fIEVersion == 11) {
+                return "IE11";
+            }
+            else {
+                return "0"
+            }//IE版本过低
+        }
+        else if (isEdge) {
+            return "Edge";
+        }
+        else {
+            return "-1";//非IE
+        }
+    }
+
+</script>
+</body>
+</html>
+
+
+

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Mobile Specific Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon-->
+    <link rel="shortcut icon" th:href="@{/img/fav.png}">
+    <!-- Author Meta -->
+    <meta name="author" content="codepixer">
+    <!-- Meta Description -->
+    <meta name="description" content="">
+    <!-- Meta Keyword -->
+    <meta name="keywords" content="">
+    <!-- meta character set -->
+    <meta charset="UTF-8">
+    <!-- Site Title -->
+    <title>Book</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+    <!--
+    CSS
+    ============================================= -->
+    <link rel="stylesheet" th:href="@{/css/linearicons.css}">
+    <link rel="stylesheet" th:href="@{/css/font-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{/css/magnific-popup.css}">
+    <link rel="stylesheet" th:href="@{/css/nice-select.css}">
+    <link rel="stylesheet" th:href="@{/css/animate.min.css}">
+    <link rel="stylesheet" th:href="@{/css/owl.carousel.css}">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+
+    <style>
+        .overlay {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            z-index: 10001;
+            display: none;
+            filter: alpha(opacity=60);
+            background-color: #FFFFFF;
+            opacity: 1;
+            -moz-opacity: 0.5;
+        }
+
+        .loading-tip {
+            z-index: 10002;
+            position: fixed;
+            display: none;
+        }
+
+        .loading-tip img {
+            width: 60px;
+            height: 60px;
+        }
+    </style>
+</head>
+<body>
+<!-- 遮罩层DIV -->
+<div id="overlay" class="overlay"></div>
+<!-- Loading提示 DIV -->
+<div id="loadingTip" class="loading-tip">
+    <img th:src="@{/img/rubik-loader.gif}"/>
+    <lable>渲染操作进行中，请稍等15秒</lable>
+</div>
+<header id="header">
+    <div class="container">
+        <div class="row align-items-center justify-content-between d-flex">
+            <div id="logo">
+                <a href="#"><img th:src="@{/img/logo.png}" alt="" title=""/></a>
+            </div>
+            <nav id="nav-menu-container">
+                <ul class="nav-menu">
+                    <li class="menu-active"><a href="#">主页</a></li>
+                    <li><a href="#">产品</a></li>
+                    <li><a href="#">价格</a></li>
+                    <li><a href="#">服务</a></li>
+                </ul>
+            </nav><!-- #nav-menu-container -->
+        </div>
+    </div>
+</header><!-- #header -->
+
+
+<!-- start banner Area -->
+<section class="banner-area">
+    <div class="container">
+        <div class="row fullscreen d-flex align-items-center justify-content-start">
+            <div class="banner-content col-lg-7">
+                <h5 class="text-white text-uppercase">PET箱包在线</h5>
+                <h1 class="text-uppercase">
+                    上传图片并预览成品图！
+                </h1>
+                <p class="text-white pt-20 pb-20">
+                    选择不超过3MB的jpg文件并上传 <br>
+                </p>
+                <button class="primary-btn text-uppercase" style="overflow: hidden;display: inline-block;">选择图片
+                    <input id="chose-file" type="file" name="file" multiple
+                           style="opacity: 0;position: absolute;left: 0px;top: 0px;opacity: 0;-ms-filter: 'alpha(opacity=0)';"/>
+                </button>
+                <button id="upload" class="primary-btn text-uppercase" style="overflow: hidden;display: inline-block;"
+                        onclick="limitJpg('chose-file')">上传图片
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="course-area section-gap" id="course">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="menu-content pb-60 col-lg-9">
+                <div class="title text-center">
+                    <h1 class="mb-10">与众不同，万里挑一</h1>
+                    <p>即刻定制专属自己的行李箱</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="active-course-carusel">
+                <div class="single-course item">
+                    <img class="img-fluid" src="http://106.15.207.141/preview/ads/c1.jpg" alt="">
+                    <p class="sale-btn">For Sale</p>
+                    <div class="details">
+                        <a href="#"><h4>Breakthrough Thinking <span class="price float-right">$56</span></h4></a>
+                        <p>
+                        </p>
+                    </div>
+                </div>
+                <div class="single-course item">
+                    <img class="img-fluid" src="http://106.15.207.141/preview/ads/c2.jpg" alt="">
+                    <p class="sale-btn">For Sale</p>
+                    <div class="details">
+                        <a href="#"><h4>Breakthrough Thinking <span class="price float-right">$56</span></h4></a>
+                        <p>
+                        </p>
+                    </div>
+                </div>
+                <div class="single-course item">
+                    <img class="img-fluid" src="http://106.15.207.141/preview/ads/c3.jpg" alt="">
+                    <p class="sale-btn">For Sale</p>
+                    <div class="details">
+                        <a href="#"><h4>Breakthrough Thinking <span class="price float-right">$56</span></h4></a>
+                        <p>
+                        </p>
+                    </div>
+                </div>
+                <div class="single-course item">
+                    <img class="img-fluid" src="http://106.15.207.141/preview/ads/c4.jpg" alt="">
+                    <p class="sale-btn">For Sale</p>
+                    <div class="details">
+                        <a href="#"><h4>Breakthrough Thinking <span class="price float-right">$56</span></h4></a>
+                        <p>
+                        </p>
+                    </div>
+                </div>
+                <div class="single-course item">
+                    <img class="img-fluid" src="http://106.15.207.141/preview/ads/c5.jpg" alt="">
+                    <p class="sale-btn">For Sale</p>
+                    <div class="details">
+                        <a href="#"><h4>Breakthrough Thinking <span class="price float-right">$56</span></h4></a>
+                        <p>
+                        </p>
+                    </div>
+                </div>
+                <div class="single-course item">
+                    <img class="img-fluid" src="http://106.15.207.141/preview/ads/c6.jpg" alt="">
+                    <p class="sale-btn">For Sale</p>
+                    <div class="details">
+                        <a href="#"><h4>Breakthrough Thinking <span class="price float-right">$56</span></h4></a>
+                        <p>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer-area section-gap">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 col-md-6 col-sm-6">
+                <div class="single-footer-widget">
+                    <h6>About Us</h6>
+                    <p>
+                        <!--Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut-->
+                        <!--labore dolore magna aliqua.-->
+                    </p>
+                    <p class="footer-text">
+                        Copyright &copy; Overseachem Ltd.</br>
+                        上海晟海实业有限公司
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-5  col-md-6 col-sm-6">
+                <div class="single-footer-widget">
+                    <h6>Newsletter</h6>
+                    <p>Stay update with our latest</p>
+                    <div class="" id="mc_embed_signup">
+                        <form target="_blank" novalidate
+                              action="#/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get"
+                              class="form-inline">
+                            <input class="form-control" name="EMAIL" placeholder="EMAIL ADDRESS"
+                                   onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Email '"
+                                   required="" type="email">
+                            <button class="click-btn btn btn-default"><i class="fa fa-long-arrow-right"
+                                                                         aria-hidden="true"></i></button>
+                            <div style="position: absolute; left: -5000px;">
+                                <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
+                            </div>
+
+                            <div class="info"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6 col-sm-6 social-widget">
+                <br class="single-footer-widget">
+                <h6>Follow Us</h6>
+                <p>No.58,Zhanye Rd.,Jinshan District,Shanghai City </br>
+                    上海市金山区展业路58号</p>
+            </div>
+        </div>
+    </div>
+    </div>
+</footer>
+
+<script th:src="@{/js/vendor/jquery-2.2.4.min.js}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script th:src="@{/js/vendor/bootstrap.min.js}"></script>
+
+<script th:src="@{/js/easing.min.js}"></script>
+<script th:src="@{/js/hoverIntent.js}"></script>
+<script th:src="@{/js/superfish.min.js}"></script>
+<script th:src="@{/js/jquery.ajaxchimp.min.js}"></script>
+<script th:src="@{/js/jquery.magnific-popup.min.js}"></script>
+<script th:src="@{/js/owl.carousel.min.js}"></script>
+<script th:src="@{/js/jquery.sticky.js}"></script>
+<script th:src="@{/js/jquery.nice-select.min.js}"></script>
+<script th:src="@{/js/parallax.min.js}"></script>
+<script th:src="@{/js/waypoints.min.js}"></script>
+<script th:src="@{/js/jquery.counterup.min.js}"></script>
+<script th:src="@{/js/mail-script.js}"></script>
+<script th:src="@{/js/main.js}"></script>
+
+<script>
+    $(function () {
+    })
+
+    function limitJpg(fileId) {
+        var max_size = 3000;// 300k
+        var tmpFile = document.getElementById(fileId);
+        if (tmpFile.value == '' || tmpFile.value == null) {
+            alert("请上传图片");
+            return false;
+        }
+        if (!/\.(jpg|jpeg|png|JPG|PNG)$/.test(tmpFile.value)) {
+            alert("图片类型必须是[jpeg,jpg,png]中的一种");
+            tmpFile.value = "";
+            return false;
+        } else {
+            var fileData = tmpFile.files[0];
+            var size = fileData.size;
+            if (size > max_size * 1024) {
+                alert("图片大小不能超过3MB");
+                tmpFile.value = "";
+            } else {
+                showLoading();
+                var formData = new FormData();
+                formData.append("file", fileData);
+                console.log(formData);
+                $.ajax({
+                    url: '/preview/upload_img',
+                    type: 'post',
+                    contentType: false, //禁止设置请求类型
+                    processData: false, //禁止jquery对DAta数据的处理,默认会处理
+                    data: formData,
+                    success: function (res) {
+                        if(res.stat){
+                            location.href = '/preview/render?uploadImgPath=' + res.info;
+                        }
+                    }
+                });
+            }
+        }
+    }
+
+    function showOverlay() {
+        // 遮罩层宽高分别为页面内容的宽高
+        $('.overlay').css({'height': $(document).height(), 'width': $(document).width()});
+        $('.overlay').show();
+    }
+
+    function hideLoading() {
+        $('.overlay').hide();
+        $("#loadingTip").hide();
+        $(document).scroll(function () {
+            return true;
+        });
+    }
+
+    function showLoading() {
+        // 先显示遮罩层
+        showOverlay();
+        // Loading提示窗口居中
+        $("#loadingTip").css('top',
+            (getWindowInnerHeight() - $("#loadingTip").height()) / 2 + 'px');
+        $("#loadingTip").css('left',
+            (getWindowInnerWidth() - $("#loadingTip").width()) / 2 + 'px');
+
+        $("#loadingTip").show();
+        $(document).scroll(function () {
+            return false;
+        });
+    }
+
+    // 浏览器兼容 取得浏览器可视区高度
+    function getWindowInnerHeight() {
+        var winHeight = window.innerHeight
+            || (document.documentElement && document.documentElement.clientHeight)
+            || (document.body && document.body.clientHeight);
+        return winHeight;
+
+    }
+
+    // 浏览器兼容 取得浏览器可视区宽度
+    function getWindowInnerWidth() {
+        var winWidth = window.innerWidth
+            || (document.documentElement && document.documentElement.clientWidth)
+            || (document.body && document.body.clientWidth);
+        return winWidth;
+
+    }
+
+</script>
+</body>
+</html>
+
+
+
